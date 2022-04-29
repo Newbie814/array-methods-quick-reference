@@ -1,83 +1,37 @@
-// majority of these prevent from mutating the original array... they return a new arry or return the result without affecting the original array
-
-//take callback functions as arguments
-
-//forEach()     good replacement for for loop
-// can also be used to mutate original array
-
-// for loop example:
+// map()
+// to create a new array from the existing array
 
 let arr = [3, 15, 25, 6, 8, 12];
-total = 0;
 
-// for (let val of arr) {
-//   total += val;
-// }
+// let newArr = arr.map((val, idx, theArray) => {})  second two parameters are optional -- val is variable representing individual element in array, idx is index of element in array, theArray is the original array
 
-// same as above, but with forEach(). (val is variable I assigned to represent each element in the array)
-
-arr.forEach((val) => {
-  total += val; // same as total = total + val
+let newArr = arr.map((val) => {
+  return val * val;
 });
 
-console.log(total); //69
+console.log(newArr); // [9, 225, 625, 36, 64, 144]
 
-// example of forEach() with mutating original array
-
-let objArr = [
-  {
-    firstName: 'Matt',
-    lastName: 'Woodard',
-    score: 69,
-    pass: null,
-  },
-  {
-    firstName: 'Sandra',
-    lastName: 'Scheff',
-    score: 93,
-    pass: null,
-  },
-  {
-    firstName: 'Liam',
-    lastName: 'Woodard',
-    score: 86,
-    pass: null,
-  },
-  {
-    firstName: 'Connor',
-    lastName: 'Woodard',
-    score: 85,
-    pass: null,
-  },
-];
-
-// objArr.forEach(function (student) {
-//   if (student.score >= 70) {
-//     student.pass = true;
-//   } else {
-//     student.pass = false;
-//   }
-// });
-
-objArr.forEach((student) => {
-  student.score >= 70 ? (student.pass = true) : (student.pass = false);
+let newArr2 = arr.map((val, idx, theArray) => {
+  console.log(val);
+  console.log(idx);
+  console.log(theArray);
+  tracking = val * val;
+  console.log(tracking);
+  return tracking;
 });
 
-console.log(objArr);
+// filter()  creates a new array, a subset array of elements filtered out of original array via a test function
 
-//output:
-// 0: {firstName: 'Matt', lastName: 'Woodard', score: 69, pass: false}
-// 1: {firstName: 'Sandra', lastName: 'Scheff', score: 93, pass: true}
-// 2: {firstName: 'Liam', lastName: 'Woodard', score: 86, pass: true}
-// 3: {firstName: 'Connor', lastName: 'Woodard', score: 85, pass: true}
+let scores = [80, 50, 100, 90, 80, 75];
 
-// callback function in forEach() can have multiple arguments. 1st is variable representing each element in the array, 2nd is index of element in array, 3rd is the original array
-
-let arr2 = [3, 15, 25, 6, 8, 12];
-// total2 = 0;
-
-arr2.forEach((val, idx, theArray) => {
-  theArray[idx] = val * 2;
+let passScores = scores.filter((score) => {
+  return score >= 70;
 });
 
-console.log(arr2);
+console.log(passScores);
+
+let failingScores = scores.filter((score) => {
+  return score < 70;
+}); // [80, 100, 90, 80, 75]
+
+console.log(failingScores); //[50]
