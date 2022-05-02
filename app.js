@@ -84,3 +84,38 @@ let array8 = [
   [15, 20],
   [25, 30, 35, 40],
 ];
+
+//flat() method - flattens an array and returns new array.  Puts them elments all on the same level so they are easier to access
+
+let flatArray = array8.flat();
+console.log(flatArray); //[5, 10, 15, 20, 25, 30, 35, 40]
+
+// flatMap() returns a new flattened array while simultaneously processing each element according to a callback function
+
+let blackSails2 = [
+  'You’re an educated man,',
+  'my lord,',
+  'but I think it worth reminding you that',
+  'in most cases a man trying to',
+  'change the world fails for one simple',
+  'and unavoidable reason… everyone else.',
+];
+
+let strArraySplit = blackSails2.map((val) => val.split(' '));
+console.log(strArraySplit);
+// 0: (4) ['You’re', 'an', 'educated', 'man,']
+// 1: (2) ['my', 'lord,']
+// 2: (8) ['but', 'I', 'think', 'it', 'worth', 'reminding', 'you', 'that']
+// 3: (7) ['in', 'most', 'cases', 'a', 'man', 'trying', 'to']
+// 4: (7) ['change', 'the', 'world', 'fails', 'for', 'one', 'simple']
+// 5: (5) ['and', 'unavoidable', 'reason…', 'everyone', 'else.']
+
+let strArraySplit2 = blackSails2.map((val) => val.split(' ')).flat();
+console.log(strArraySplit2);
+
+// ['You’re', 'an', 'educated', 'man,', 'my', 'lord,', 'but', 'I', 'think', 'it', 'worth', 'reminding', 'you', 'that', 'in', 'most', 'cases', 'a', 'man', 'trying', 'to', 'change', 'the', 'world', 'fails', 'for', 'one', 'simple', 'and', 'unavoidable', 'reason…', 'everyone', 'else.']
+
+// flat map is essentially combining the above without having to use chainining
+
+let strArraySplit3 = blackSails2.flatMap((val) => val.split(' '));
+console.log(strArraySplit3); // returns all words as elements in a single level array, as above
