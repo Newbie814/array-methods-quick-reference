@@ -1,54 +1,44 @@
-/*
-Create an Array of Arrays (multi-dimensional array) that will store a matrix for the product of even numbers up to and including 20. Here is a sample of the numbers the matrix will contain the product for. So in array[0][0] you should have 4 (2 * 2). array[0][1] and [1][0] should contain 8 (2 * 4) and so on.
+//indexOf  and lastIndexOf      search for a specific value and return the index of that value. If that value is ot found, returns -1 lastIndexOf starts at right side ==========================================
 
-   2   4   6   8   10   12   14   16   18   20
-2
-4      
-6
-8
-10
-12
-14
-16
-18
-20
-*/
+let students = [
+  'Matt',
+  'Sandra',
+  'Liam',
+  'Connor',
+  'TT',
+  'Lita',
+  'Grandpa',
+  'Nana',
+  'PawPaw',
+  'MeMe',
+];
+scores = [80, 90, 55, 60, 85, 95, 25];
 
-//Find out what number is in [9][9].
-let table = [];
-rowNum = 2;
-colNum = 2;
+let numLocation = scores.indexOf(25);
+let numLocation2 = scores.indexOf(37);
 
-for (let i = 0; i < 10; i++) {
-  table[i] = []; // creates 10 empty sub-arrays inside table
-}
+console.log(numLocation); //6
+console.log(numLocation2); // -1 (doesn't exist)
 
-for (let row = 0; row < 10; row++) {
-  // outer loop determines the index
-  for (let col = 0; col < 10; col++) {
-    table[row][col] = rowNum * colNum;
-    colNum += 2;
-  }
-  colNum = 2;
-  rowNum += 2;
-}
+let strLocation = students.indexOf('Lita');
+let strLocation2 = students.indexOf('Lit');
+let strLocation3 = students.indexOf('lita');
 
-// console.log(table);
+console.log(strLocation); //5
+console.log(strLocation2); // -1 (doesn't exist - has to be exact match)
+console.log(strLocation3); // -1 (doesn't exist - case doesn't match)
 
-// console.log(table[9][9]);
+// includes()    returns true or false =================================================================
 
-/*
-Below are two arrays of strings. Split each string so that individual words are elements in an array. Make sure to flatten each array, and then combine them into a single array with strArray1 coming first. Once that is done, convert the array to a string and display the resulting sentence.
-*/
+if (students.includes('Lita')) {
+  console.log('Lita is in the array');
+} // true so statement is logged
 
-let strArray1 = ['Arrays are important', 'data structures for any', 'language'],
-  strArray2 = ['and', 'should be mastered', 'in', 'JavaScript.'];
+if (students.includes('lita')) {
+  console.log('Lita is in the array');
+} // false so statement is not logged
 
-let split1 = strArray1.flatMap((val) => val.split(' '));
-let split2 = strArray2.flatMap((val) => val.split(' '));
+// indexOf() and lastIndexOf() and includes() are equivalent to using === match has to match type and value
+// no coercion is applied to the values being compared
 
-let newArray = [...split1, ...split2];
-
-let arrStr = newArray.join(' ');
-
-console.log(arrStr);
+// find()
